@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details ｜ 商品详情</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: #222; color: white; padding: 1rem; text-align: center; }
+    .container { display: flex; justify-content: center; padding: 2rem; }
+    .product-info { max-width: 1200px; width: 100%; display: flex; gap: 2rem; }
+    .product-images { width: 50%; }
+    .product-images img { width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+
+    .product-details { width: 50%; }
+    .product-details h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .product-details p { font-size: 1rem; color: #555; line-height: 1.5; margin-bottom: 1rem; }
+    .product-details .price { font-size: 1.5rem; color: #e74c3c; margin-bottom: 1rem; font-weight: bold; }
+    .product-details .specs { margin-bottom: 1.5rem; }
+    .product-details .specs p { margin: 0.5rem 0; }
+
+    .buy-btn { background: #27ae60; color: white; padding: 1rem 2rem; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; width: 100%; margin-top: 1rem; }
+    .buy-btn:hover { background: #2ecc71; }
+
+    footer { background: #222; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+
+    /* 图片轮播 */
+    .carousel { display: flex; gap: 1rem; overflow-x: scroll; }
+    .carousel img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+    .carousel img:hover { transform: scale(1.1); }
+
+    /* 语言切换按钮样式 */
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-switch:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="pageTitle">商品详情 - 六和中心在线商店</h1>
+  </header>
+
+  <button class="lang-switch" id="langSwitch">English</button>
+
+  <div class="container">
+    <div class="product-info">
+      <!-- 产品图片 -->
+      <div class="product-images">
+        <img src="https://via.placeholder.com/600x400?text=Product+Image" alt="Product Image">
+        <div class="carousel">
+          <img src="https://via.placeholder.com/80x80?text=Image1" alt="Image 1">
+          <img src="https://via.placeholder.com/80x80?text=Image2" alt="Image 2">
+          <img src="https://via.placeholder.com/80x80?text=Image3" alt="Image 3">
+        </div>
+      </div>
+
+      <!-- 产品详情 -->
+      <div class="product-details">
+        <h2 id="productName">iPhone 15</h2>
+        <p class="price" id="productPrice">¥7,999.00</p>
+        <p id="productDescription">iPhone 15 是苹果公司推出的一款智能手机，搭载最新的 A16 Bionic 处理器，拥有更加出色的摄像系统，支持 5G 网络，拥有更强的电池续航能力，是您不可错过的智能手机选择。</p>
+        
+        <!-- 产品规格 -->
+        <div class="specs">
+          <h3 id="specTitle">产品规格：</h3>
+          <p id="spec1"><strong>屏幕尺寸：</strong>6.1 英寸</p>
+          <p id="spec2"><strong>处理器：</strong>A16 Bionic</p>
+          <p id="spec3"><strong>存储容量：</strong>128GB / 256GB / 512GB</p>
+          <p id="spec4"><strong>摄像头：</strong>1200 万像素主摄 + 1200 万像素超广角摄像头</p>
+          <p id="spec5"><strong>电池：</strong>3150 mAh</p>
+          <p id="spec6"><strong>颜色：</strong>黑色、白色、红色、蓝色</p>
+        </div>
+
+        <!-- 购买按钮 -->
+        <button class="buy-btn" id="buyBtn">立即购买</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p id="footerText">六和中心在线商店 | 联系我们：we@lcna.cn</p>
+  </footer>
+
+  <script>
+    const translations = {
+      zh: {
+        pageTitle: "商品详情 - 六和中心在线商店",
+        productName: "iPhone 15",
+        productPrice: "¥7,999.00",
+        productDescription: "iPhone 15 是苹果公司推出的一款智能手机，搭载最新的 A16 Bionic 处理器，拥有更加出色的摄像系统，支持 5G 网络，拥有更强的电池续航能力，是您不可错过的智能手机选择。",
+        specTitle: "产品规格：",
+        specs: [
+          "屏幕尺寸：6.1 英寸",
+          "处理器：A16 Bionic",
+          "存储容量：128GB / 256GB / 512GB",
+          "摄像头：1200 万像素主摄 + 1200 万像素超广角摄像头",
+          "电池：3150 mAh",
+          "颜色：黑色、白色、红色、蓝色"
+        ],
+        footerText: "六和中心在线商店 | 联系我们：we@lcna.cn",
+        langButton: "English",
+        buyBtn: "立即购买",
+      },
+      en: {
+        pageTitle: "Product Details - LiuheCenter eStore",
+        productName: "iPhone 15",
+        productPrice: "$799.00",
+        productDescription: "The iPhone 15 is a smartphone launched by Apple, equipped with the latest A16 Bionic chip, boasting an excellent camera system, 5G support, and longer battery life. It's a must-have for anyone looking for a top-tier smartphone.",
+        specTitle: "Product Specifications:",
+        specs: [
+          "Screen Size: 6.1 inches",
+          "Processor: A16 Bionic",
+          "Storage: 128GB / 256GB / 512GB",
+          "Camera: 12MP main camera + 12MP ultra-wide camera",
+          "Battery: 3150 mAh",
+          "Colors: Black, White, Red, Blue"
+        ],
+        footerText: "LiuheCenter eStore | Contact us: we@lcna.cn",
+        langButton: "中文",
+        buyBtn: "Buy Now",
+      }
+    };
+
+    let currentLang = "zh";
+
+    const pageTitle = document.getElementById('pageTitle');
+    const productName = document.getElementById('productName');
+    const productPrice = document.getElementById('productPrice');
+    const productDescription = document.getElementById('productDescription');
+    const specTitle = document.getElementById('specTitle');
+    const specs = document.querySelectorAll('.specs p');
+    const footerText = document.getElementById('footerText');
+    const langSwitch = document.getElementById('langSwitch');
+    const buyBtn = document.getElementById('buyBtn');
+
+    function switchLanguage() {
+      currentLang = currentLang === "zh" ? "en" : "zh";
+      const t = translations[currentLang];
+
+      pageTitle.textContent = t.pageTitle;
+      productName.textContent = t.productName;
+      productPrice.textContent = t.productPrice;
+      productDescription.textContent = t.productDescription;
+      specTitle.textContent = t.specTitle;
+      t.specs.forEach((spec, index) => {
+        specs[index].textContent = spec;
+      });
+      footerText.textContent = t.footerText;
+      langSwitch.textContent = t.langButton;
+      buyBtn.textContent = t.buyBtn;
+    }
+
+    langSwitch.addEventListener('click', switchLanguage);
+
+  </script>
+</body>
+</html>
